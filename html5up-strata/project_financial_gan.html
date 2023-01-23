@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Pierre Counathe | Financial Time Series Generation with GANs</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/jpg" href="images/avatar.jpg" />
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+            <h5>M.S. Management Science & Engineering (Operations Research) <br>@ Columbia University</h5>
+            <h5>M.S. Data Science for Business <br>@ Ecole Polytechnique (France)</h5>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- title and links -->
+        <section id="title and links">
+            <a href="home.html#projects"><span class="icon solid fa-chevron-left"></span> Back to Projects</a>
+            <header class="major">
+                <h2>Financial Time Series Generation with GANs</h2>
+            </header>
+            <!-- <img src="images/thumbs/NBA_thumb_non_padded.gif" class="center image-small" /> -->
+            <a href="https://github.com/PierreCounathe/Financial-Time-Series-Generation-Frequency-GANs/blob/main/IEORE4742_Poster_Sauma2_Financial_Time_Series_Generation_with_GANs.pdf"
+                class="button primary fit small">Full-size Poster</a>
+        </section>
+
+        <!-- description -->
+        <section id="description">
+            <h2>Motivation & Objective</h2>
+            <p>
+                The generation of high quality time series data has been imperative since the advent of
+                quantitative finance. This is especially true as models grow more abstract with more trainable
+                parameters necessitating more training data which we do not have. Recent developments
+                have been made in the form of temporal convolutional GANs with success, notably with
+                the introduction of QuantGAN, TAGAN and TTGAN. We propose a novel addition to these
+                methods in the form of a GAN that acts in the frequency domain rather than the time domain.
+                Frequency domain discriminators add value to the architectures as they help replicate the
+                patterns in returns autocorrelation. Frequency domain generators show some small promise
+                as they struggle to replicate the ACF patterns of various futures time series, but the patterns
+                in these failures show a clear path forward.
+            </p>
+
+            <h2>Results</h2>
+            <p>See the self-sufficient full-size poster for more details and results.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/pierre-counathe/" class="icon brands fa-linkedin"><span
+                                class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/PierreCounathe" class="icon brands fa-github"><span
+                                class="label">Github</span></a></li>
+                    <li><a href="mailto:pc2977@columbia.edu" class="icon solid fa-envelope"><span
+                                class="label">Email</span></a></li>
+                    <li><a href="home.html" class="icon solid fa-home"><span class="label">Home</span></a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

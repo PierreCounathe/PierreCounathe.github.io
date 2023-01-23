@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Pierre Counathe | Image Completion with GANs</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/jpg" href="images/avatar.jpg" />
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+            <h5>M.S. Management Science & Engineering (Operations Research) <br>@ Columbia University</h5>
+            <h5>M.S. Data Science for Business <br>@ Ecole Polytechnique (France)</h5>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- title and links -->
+        <section id="title and links">
+            <a href="home.html#projects"><span class="icon solid fa-chevron-left"></span> Back to Projects</a>
+            <header class="major">
+                <h2>Image Completion with GANs</h2>
+            </header>
+            <img src="images/thumbs/image_completion_thumb_old.png" class="center image-large" />
+            <blockquote>From left to right: original protrait, incomplete portrait, portrait completed by the
+                GAN.</blockquote>
+            <a href="https://github.com/PierreCounathe/Globally-and-Locally-Consistent-Image-Completion-Pytorch-Implementation"
+                class="button primary fit small">GitHub repository</a>
+        </section>
+
+        <!-- description -->
+        <section id="description">
+            <h2>Motivation & Objective</h2>
+            <p>This project aims at implementing a Generative Adversarial Network (GAN) for image completion in Python
+                and Pytorch. The architecture, as described in the reference research paper (cf. reference section) is
+                meant to be fed with incomplete images (images with holes of any shape in it) and to complete them. An
+                example is
+                given above: the left image is the original image, the center image is the image given to the trained
+                GAN, and the right image is the output of the GAN.
+            </p>
+            <p>Such a model can be used on damaged portraits as depicted above, but it can also be used on landscapes to
+                erase unwanted objects or features in an image.</p>
+
+            <h2>Data</h2>
+            Two instances of the model were trained on two different datasets:
+            <ul>
+                <li>The first dataset used is a subset of <a
+                        href="https://mmlab.ie.cuhk.edu.hk/projects/CelebA.html">CelebA</a> that contains celebrities
+                    portraits. All images in this dataset are pretty similar, which eases the learning process.</li>
+                <li>The second dataset used is a subset of <a href="http://places2.csail.mit.edu/">Places2</a> that
+                    contains day-to-day life scenes. With 400+ unique scene types, this dataset has greater variance,
+                    which hindered the learning process and results.</li>
+            </ul>
+
+            <h2>Approach</h2>
+            Without diving in the training process and architecture details, the particularities of this model are the
+            following:
+            <ul>
+                <li>The Generator is not fed with noise but with an incomplete image (a group of pixels are set to
+                    black);</li>
+                <li>The Generator is first trained by itself, the loss being the pixel-wise distance between the
+                    original image and the completed image;</li>
+                <li>The Discriminator is composed of two sub-models, one assessing the realness of the whole image, the
+                    other one assessing the realness of a sub-image centered on the missing zone;</li>
+                <li>The Discriminator is also trained by itself before being combined with the Generator.</li>
+            </ul>
+
+            <h2>References</h2>
+            <ul class="alt">
+                <li><strong>Model Architecture</strong>: <em>Satoshi Iizuka, Edgar Simo-Serra, and Hiroshi Ishikawa.
+                        2017. Globally and locally consistent image
+                        completion. ACM Trans. Graph. 36, 4, Article 107 (August 2017), 14 pages</em></li>
+                <li><strong>CelebA dataset</strong>: <em>Liu, Ziwei and Luo, Ping and Wang, Xiaogang and Tang, Xiaoou.
+                        2015. Deep Learning Face Attributes in the
+                        Wild. Proceedings of International Conference on Computer Vision (ICCV)</em></li>
+                <li><strong>Places2 dataset</strong>: <em>Places: A 10 million Image Database for Scene Recognition
+                        B. Zhou, A. Lapedriza, A. Khosla, A. Oliva, and A. Torralba
+                        IEEE Transactions on Pattern Analysis and Machine Intelligence, 2017</em></li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/pierre-counathe/" class="icon brands fa-linkedin"><span
+                                class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/PierreCounathe" class="icon brands fa-github"><span
+                                class="label">Github</span></a></li>
+                    <li><a href="mailto:pc2977@columbia.edu" class="icon solid fa-envelope"><span
+                                class="label">Email</span></a></li>
+                    <li><a href="home.html" class="icon solid fa-home"><span class="label">Home</span></a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

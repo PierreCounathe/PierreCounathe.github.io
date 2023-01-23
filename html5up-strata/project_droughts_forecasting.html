@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Pierre Counathe | Droughts Forecasting</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/jpg" href="images/avatar.jpg" />
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+            <h5>M.S. Management Science & Engineering (Operations Research) <br>@ Columbia University</h5>
+            <h5>M.S. Data Science for Business <br>@ Ecole Polytechnique (France)</h5>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- title and links -->
+        <section id="title and links">
+            <a href="home.html#projects"><span class="icon solid fa-chevron-left"></span> Back to Projects</a>
+            <header class="major">
+                <h2>Droughts Forecasting</h2>
+            </header>
+            <img src="images/thumbs/droughts_thumb_old.jpeg" class="center image-small" />
+            <ul class="actions fit small">
+                <li><a href="https://github.com/PierreCounathe/Droughts-Forecasting/blob/lstmbranch/summary/Droughts%20Forecasting%20Summary.pdf"
+                        class="button primary fit small">Summary Slides</a></li>
+                <li><a href="https://github.com/PierreCounathe/Droughts-Forecasting"
+                        class="button primary fit small">GitHub
+                        repository</a></li>
+            </ul>
+        </section>
+
+        <!-- description -->
+        <section id="description">
+            <h2>Motivation & Objective</h2>
+            <p>Since 1980, the US experienced 26 major droughts, each event averaging a cost of $9.6 billion. It is
+                also well known that droughts frequency and intensities will increase in the US and globally. It is thus
+                interesting to build droughts prediction models that could be able to generalize well and to predict
+                droughts with the greatest possible lead times.
+            </p>
+
+            <p>Using weather time series, previous drought scores and static soil data, I compare the performance of
+                Linear Regression, Gradient Boosted Trees, Dense Neural Network, and LSTM to perform droughts
+                forecasting.</p>
+
+            <h2>Data</h2>
+            <p>
+                The dataset used for this project is composed of daily weather observations in the US, that come from
+                the
+                NASA POWER (Prediction of Worldwide Energy Resources) Project, of soil data that come from the
+                Harmonized
+                World Soil Database, and of drought score that come from the U.S. Drought Monitor. <br>
+            </p>
+            <p>
+                <strong>Weather data</strong>: The weather data contains daily observations of 18 weather variables
+                (Temperature, Wind, Humidity, Precipitations, etc. information) in the US, at a county level (each of
+                them
+                represented by a FIPS code). It is already split in three sets: a train set, a validation and test set
+                that
+                all cover 3058 counties, respectively from 2000 to 2016, 2016 to 2018 and from 2018 to 2020. <br>
+
+                <strong>Soil data</strong>: The soil data is static data that contains around 30 variables concerning
+                the
+                soil agricultural characteristics (distribution of slopes levels, aspects, land use, etc. in each
+                county).
+                This data is available for every county that either appears in the train, or in all timeseries.<br>
+
+                <strong>Target variable</strong>: The U.S. Drought Monitor (USDM) is produced through a partnership
+                between
+                the National Drought Mitigation Center at the University of Nebraska-Lincoln, the United States
+                Department
+                of Agriculture, and the National Oceanic and Atmospheric Administration. It provides for each of the
+                3058
+                studied counties a continuous drought score ranging from 0 to 5, once per week and for each county, but
+                is
+                often presented in 5 classes (No Drought - Exceptional Drought). The particularity of this drought score
+                is
+                that it combines multiple drought indices or indicators to create a unique metric, that results in being
+                a
+                more objective drought value. Is is a combination of the Palmer Drought Severity Index (PDSI), of the
+                CPC
+                Soil Moisture Model,and of the Standardized Precipitation Index (SPI). As the score is provided on a
+                weekly
+                basis, we interpolate it for convenience in the model development.
+            </p>
+
+            <h2>Approach</h2>
+            <h4>Regression task</h4>
+            <p>After exploring, analyzing and cleaning the data, I compare multiple models. The target variable is a
+                continuous score that is regressed. However, to stick to USDM's 6 scores categories, I bin the predicted
+                drought scores in the 6 drought severity categories and compute the forecasting average Macro F1 score.
+                With the forecasting MSE, these are the two main performance metrics that are monitored.</p>
+
+            <h4>Modeling</h4>
+            <p>I compared multiple forecasting methods: <br>
+                <strong>Naive models</strong>: Two Naive models that represent the performance baseline: an
+                identity-model that uses current drought scores as predictions, and a model that interpolates droughts
+                based on the two last droughts scores.<br>
+                <strong>ML models</strong>: Classic ML techniques (Ridge regression, Gradient
+                Boosted Trees). Weather observations are flattened or averaged to take into account long-term
+                dependencies between weather and droughts. Different combinations of regularization, time window (how
+                far we look in the past), and features are tested to best solve the problem. <br>
+                <strong>LSTM</strong>: Using the best set of features found while devising ML models.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/pierre-counathe/" class="icon brands fa-linkedin"><span
+                                class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/PierreCounathe" class="icon brands fa-github"><span
+                                class="label">Github</span></a></li>
+                    <li><a href="mailto:pc2977@columbia.edu" class="icon solid fa-envelope"><span
+                                class="label">Email</span></a></li>
+                    <li><a href="home.html" class="icon solid fa-home"><span class="label">Home</span></a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

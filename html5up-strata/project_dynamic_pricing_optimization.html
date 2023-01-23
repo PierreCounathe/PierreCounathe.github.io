@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Pierre Counathe | Dynamic Pricing Optimization in Real Estate</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/jpg" href="images/avatar.jpg" />
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+            <h5>M.S. Management Science & Engineering (Operations Research) <br>@ Columbia University</h5>
+            <h5>M.S. Data Science for Business <br>@ Ecole Polytechnique (France)</h5>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- title and links -->
+        <section id="title and links">
+            <a href="home.html#projects"><span class="icon solid fa-chevron-left"></span> Back to Projects</a>
+            <header class="major">
+                <h2>Dynamic Pricing Optimization in Real Estate</h2>
+            </header>
+            <img src="images/thumbs/dynamic_pricing_thumb_old.png" class="center image-small" />
+            <a href="https://github.com/PierreCounathe/Real-Estate-Pricing-Optimization-Under-Financial-Constraints/blob/main/Dynamic%20Pricing%20Optimization%20in%20Real-Estate%20under%20financial%20and%20time%20constraints.pdf"
+                class="button primary fit small">Summary Slides</a>
+        </section>
+
+        <!-- description -->
+        <section id="description">
+            <h2>Motivation & Objective</h2>
+            <p>In the Real Estate (RE) industry, pricing is generally done by experts, considering the asset's features,
+                the current market conditions, and sometimes the financial and time constraints relative to the RE
+                project. These constraints can be bank loan repayment debts, and/or deadlines to entirely sell a
+                property (e.g. all units of a building). This project aims at getting rid of the biases introduced by
+                realtors and at fully taking into account the financial and time constraints, as well as the current
+                inventory in the pricing process. It
+                also aims at making pricing dynamic: reeavaluating assets prices under current inventory and
+                satisfaction of the
+                financial constraints.
+            </p>
+            <p>The project's scope extends from sales and listings data scraping, to devising the pricing algorithm and
+                testing it in a simulation environment.</p>
+
+            <h2>Approach</h2>
+            <p>
+                There are multiple building blocks to this project:
+            <ul>
+                <li><strong>Data Scraping</strong>: The data required by the ML and optimization algorithms can be
+                    scraped on the main real estate market places. Information about both current listings and previous
+                    sales can be found in a such way.</li>
+                <li><strong>Market Value and Time-on-Market ML models</strong>: Using past sales data, it is easy to
+                    build two ML models assigning to each asset a market value and a predicted absorption time: the time
+                    an asset takes to sell once it is listed at a certain price. The Market Value model is Gradient
+                    Boosted Trees that are fitted on previous sale prices. Making the assumption that this model gives a
+                    true market value, it is possible to estimate from the model's error, an overpricing coefficient for
+                    every past sale. This overpricing coefficient is used as a predictor to derive the absorption time
+                    of RE assets.</li>
+                <li><strong>Dynamic Pricing Algorithm</strong>: This algorithm adapts RE assets prices in time, in order
+                    to satisfy financial and time constraints (revenues and # of sales targets in time). Monitoring
+                    actual sale and revenue rates and comparing them to the expected ones, RE assets' prices can be
+                    adapted to satisfy financial and time constraints. The starting price can be informed by the Market
+                    Value model and the algorithm's parameters can be informed by the time-on-market model.</li>
+                <li><strong>Simulation</strong>: It is possible to simulate demand (on the whole market, on the whole
+                    inventory and on unique assets) using past sales data, by making a few assumptions. Using the
+                    overpricing distribution of past sales it is possible to make the demand dependent on the assets'
+                    prices.</li>
+            </ul>
+            </p>
+
+            <h2>Results</h2>
+            <p>Putting everything together, given information on a building and its units layout, it is possible to
+                build an algorithm that prices monthly every building's unit. The simulation environment allows to
+                compare a static pricing strategy to the Dynamic Pricing algorithm.</p>
+            <p>More thorough explanation and visualizations can be found in the summary slides (cf. link at the top of
+                the page).</p>
+
+            <h2>References</h2>
+            <ul class="alt">
+                <li><strong>Dynamic Pricing Algorithm</strong>: <em>Besbes, Omar, and Costis Maglaras. “Dynamic Pricing
+                        with Financial Milestones: Feedback-Form Policies.” Management Science 58, no. 9 (2012):
+                        1715–31.
+                    </em></li>
+            </ul>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/pierre-counathe/" class="icon brands fa-linkedin"><span
+                                class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/PierreCounathe" class="icon brands fa-github"><span
+                                class="label">Github</span></a></li>
+                    <li><a href="mailto:pc2977@columbia.edu" class="icon solid fa-envelope"><span
+                                class="label">Email</span></a></li>
+                    <li><a href="home.html" class="icon solid fa-home"><span class="label">Home</span></a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

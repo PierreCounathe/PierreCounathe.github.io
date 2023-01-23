@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+    <title>Pierre Counathe | NBA Shot Success Probability</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="icon" type="image/jpg" href="images/avatar.jpg" />
+</head>
+
+<body class="is-preload">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="inner">
+            <a href="" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+            <h5>M.S. Management Science & Engineering (Operations Research) <br>@ Columbia University</h5>
+            <h5>M.S. Data Science for Business <br>@ Ecole Polytechnique (France)</h5>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <div id="main">
+
+        <!-- title and links -->
+        <section id="title and links">
+            <a href="home.html#projects"><span class="icon solid fa-chevron-left"></span> Back to Projects</a>
+            <header class="major">
+                <h2>NBA Shot Success Probability</h2>
+            </header>
+            <img src="images/thumbs/NBA_thumb_non_padded.gif" class="center image-small" />
+            <a href="https://github.com/PierreCounathe/NBA-games-visualization-and-shooting-success-probability"
+                class="button primary fit small">GitHub repository</a>
+        </section>
+
+        <!-- description -->
+        <section id="description">
+            <h2>Motivation & Objective</h2>
+            <p>
+                This project aims at creating a visualization tool for basketball games, incorporating
+                the Shot Success Probability at any time - probability of success if the current ball carrier takes
+                a shot. This tool is a first step towards an in-game-decision analysis tool as it can be used to assess
+                the relevance of the choice between making a pass and taking a shot: is the shot success probability
+                higher before of after the pass? The data used is described below, but more detailed datasets could
+                allow for the construction of a more developed tool analysing the Expected Point Value of each possible
+                action (pass, shoot, layup, drive, etc.).
+            </p>
+
+            <h2>Data</h2>
+            Two distinct datasets are used:
+            <ul>
+                <li>A shot logs file is used to build the shot success probability model. It can be found <a
+                        href="https://www.kaggle.com/dansbecker/nba-shot-logs">on kaggle</a>. It contains data on shots
+                    taken during the 2014-2015 season, who took the shot, where it was on the court, where was the
+                    closest defender, and more.</li>
+                <li>Another dataset containing in-game positions of players on the pitch is used to apply the Shot
+                    Success Probability model. The game data can be found <a
+                        href="https://github.com/linouk23/NBA-Player-Movements"> on this GitHub repository</a>. It
+                    contains raw SportsVU game data from the 2016 season.</li>
+            </ul>
+
+            <h2>Approach</h2>
+            This project has two main components:
+            <ul>
+                <li>The Shot Success Probability model</li>
+                <li>Its application to game data and visualization</li>
+            </ul>
+            <h3>Shot Success Probability model</h3>
+            <p>The Shot Success Probability model is a simple Logistic Regression based on the features available in the
+                shot logs file. This file contains for each shot of the 2014-2015 season the distance from the ball
+                carrier
+                to the closest defender and to the basket, and a label informing if the shot was successful or not.
+                Based on
+                these features and using the trained model, it is possible to determine the Shot Success Probability of
+                every shot in a game, as long as the distances between the ball carrier, the closest defender and the
+                basket
+                can be computed.</p>
+
+            <h3>Application to Game Data and Visualization</h3>
+            <p>From the game dataset containing the players' positions, it is easy to compute the distances from players
+                to the ball and to determine who the ball carrier is. However, assigning the ball carrier flag to the
+                player closest to the ball leads in errors when a pass goes by a defender, or a teammate who actually
+                did not touch the ball. A trick here is to assign the ball-carrier flag based on multiple frames. </p>
+            <p>Then, it is easy to compute the distance from the ball carrier to the basket and to the closest defender,
+                to flag passes, to apply the Shot Success Probability model, and to build a visualization for it.</p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <ul class="icons">
+                    <li><a href="https://www.linkedin.com/in/pierre-counathe/" class="icon brands fa-linkedin"><span
+                                class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/PierreCounathe" class="icon brands fa-github"><span
+                                class="label">Github</span></a></li>
+                    <li><a href="mailto:pc2977@columbia.edu" class="icon solid fa-envelope"><span
+                                class="label">Email</span></a></li>
+                    <li><a href="home.html" class="icon solid fa-home"><span class="label">Home</span></a></li>
+                </ul>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.poptrox.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
